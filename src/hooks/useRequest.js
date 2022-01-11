@@ -2,11 +2,13 @@ import { useState, useCallback } from 'react';
 
 const useRequest = () => {
 	const [display, setDisplay] = useState({});
+	const [forecast, setForecast] = useState([]);
 	const [loading, setLoading] = useState(false);
 	const [error, setError] = useState(false);
 
 	const fetchWeather = useCallback(async (query) => {
 		setError(false);
+		setLoading(false);
 		const appid = '599f9ab00f5ffd6eeb1a6bf54606a714';
 		try {
 			let response;
@@ -28,15 +30,10 @@ const useRequest = () => {
 				throw new Error('No valid response');
 			}
 			const data = await response.json();
-			// console.log(data);
 			const getCity = data.city.name;
 			const getTemp = data.list[0].main.temp;
 			const getWeather = data.list[0].weather[0].description;
 			const getIcon = data.list[0].weather[0].icon;
-			console.log(getCity);
-			console.log(getTemp);
-			console.log(getWeather);
-			console.log(getIcon);
 			setLoading(false);
 			setDisplay({
 				city: getCity,
@@ -44,11 +41,19 @@ const useRequest = () => {
 				temp: `${(getTemp - 272).toFixed(0)}°C`,
 				icon: `http://openweathermap.org/img/wn/${getIcon}@4x.png`,
 			});
+			const forecastArray = data.list
+				.map((day) => {
+					let cel = `${(day.main.temp - 272).toFixed(0)}°C`;
+					let iconLink = `http://openweathermap.org/img/wn/${day.weather[0].icon}.png`;
+					return { temp: cel, icon: iconLink };
+				})
+				.slice(0, 5);
+			setForecast(forecastArray);
 		} catch (error) {
-			// setError(true)
+			// setError(true);
 		}
 	}, []);
-	return { display, loading, error, fetchWeather };
+	return { display, forecast, loading, error, fetchWeather };
 };
 
 export default useRequest;

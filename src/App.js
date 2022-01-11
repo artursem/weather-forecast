@@ -7,9 +7,9 @@ import WeatherNow from './components/weather/WeatherNow';
 import WeatherWeek from './components/weather/WeatherWeek';
 import { Refresh } from 'iconoir-react';
 function App() {
-	const [location, setLocation] = useState({});
+	const [location, setLocation] = useState(null);
 
-	const { display, loading, error, fetchWeather } = useRequest();
+	const { display, forecast, loading, error, fetchWeather } = useRequest();
 
 	useEffect(() => {
 		fetchWeather(location);
@@ -19,7 +19,11 @@ function App() {
 		setLocation(location);
 	};
 
-	let displayResults = <Card>PICK LOCATION</Card>;
+	let displayResults = (
+		<Card classes='h-48'>
+			<p className='m-auto'>PICK LOCATION</p>
+		</Card>
+	);
 	if (loading) {
 		displayResults = (
 			<Card classes='h-48'>
@@ -34,7 +38,7 @@ function App() {
 			</Card>
 		);
 	}
-	if (display && !error && !loading) {
+	if (location && !error && !loading) {
 		displayResults = (
 			<Fragment>
 				<Card classes='p-2'>
@@ -42,7 +46,7 @@ function App() {
 				</Card>
 
 				<Card classes='p-2'>
-					<WeatherWeek />
+					<WeatherWeek get={forecast} />
 				</Card>
 				<Card classes='h-48 p-2'>MAPA</Card>
 			</Fragment>

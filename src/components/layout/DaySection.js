@@ -1,13 +1,18 @@
 import { Fragment } from 'react';
 import Hr from './Hr';
-const DaySection = ({ id, day, icon, temp }) => {
-	let hasSeparator = id !== 5 ? true : false;
+const DaySection = (props) => {
+	let hasSeparator = props.key !== 4 ? true : false;
 	return (
 		<Fragment>
-			<li key={id} className='w-full flex flex-row justify-center my-2 p-4'>
-				<p className='mx-2 flex-1'>{day.toUpperCase()}</p>
-				<p className='m-auto flex-2'>{icon}</p>
-				<p className='mx-2 flex-1 text-right'>{temp}&deg;C</p>
+			<li
+				key={props.key}
+				className='w-full h-12 flex flex-row justify-center items-stretch my-2 p-4'
+			>
+				<div className='mx-2 flex-1'>{props.day}</div>
+				<div className='m-auto flex-2 absolute '>
+					<img src={props.icon} className='relative -top-4' />
+				</div>
+				<div className='mx-2 flex-1 text-right'>{props.temp}</div>
 			</li>
 			{hasSeparator && <Hr />}
 		</Fragment>
