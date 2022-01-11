@@ -17,7 +17,6 @@ function App() {
 
 	const handleSearch = (location) => {
 		setLocation(location);
-		console.log(location);
 	};
 
 	let displayResults = <Card>PICK LOCATION</Card>;

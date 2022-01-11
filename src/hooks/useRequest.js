@@ -13,12 +13,12 @@ const useRequest = () => {
 			if (query.method === 'city') {
 				setLoading(true);
 				response = await fetch(
-					`http://api.openweathermap.org/data/2.5/weather?q=${query.city}&appid=${appid}`
+					`https://api.openweathermap.org/data/2.5/forecast?q=${query.city}&appid=599f9ab00f5ffd6eeb1a6bf54606a714`
 				);
 			} else if (query.method === 'geo') {
 				setLoading(true);
 				response = await fetch(
-					`http://api.openweathermap.org/data/2.5/weather?lat=${query.lat}&lon=${query.lon}&appid=${appid}`
+					`https://api.openweathermap.org/data/2.5/forecast?lat=${query.lat}&lon=${query.lon}&appid=599f9ab00f5ffd6eeb1a6bf54606a714`
 				);
 			}
 
@@ -28,12 +28,21 @@ const useRequest = () => {
 				throw new Error('No valid response');
 			}
 			const data = await response.json();
+			// console.log(data);
+			const getCity = data.city.name;
+			const getTemp = data.list[0].main.temp;
+			const getWeather = data.list[0].weather[0].description;
+			const getIcon = data.list[0].weather[0].icon;
+			console.log(getCity);
+			console.log(getTemp);
+			console.log(getWeather);
+			console.log(getIcon);
 			setLoading(false);
 			setDisplay({
-				city: data.name,
-				weather: data.weather[0].main,
-				temp: `${(data.main.temp - 272).toFixed(0)}°C`,
-				icon: `http://openweathermap.org/img/wn/${data.weather[0].icon}@4x.png`,
+				city: getCity,
+				weather: getWeather,
+				temp: `${(getTemp - 272).toFixed(0)}°C`,
+				icon: `http://openweathermap.org/img/wn/${getIcon}@4x.png`,
 			});
 		} catch (error) {
 			// setError(true)
