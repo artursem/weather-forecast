@@ -5,7 +5,8 @@ import Card from './components/layout/Card';
 import LocationInput from './components/weather/LocationInput';
 import WeatherNow from './components/weather/WeatherNow';
 import WeatherWeek from './components/weather/WeatherWeek';
-import { Refresh, ArrowUp } from 'iconoir-react';
+import Refresh from './components/icons/Refresh';
+import ArrowUp from './components/icons/ArrowUp';
 
 function App() {
 	const [location, setLocation] = useState(null);
@@ -20,18 +21,14 @@ function App() {
 		<Card classes='h-48'>
 			<p className='m-auto'>
 				PICK LOCATION
-				<ArrowUp
-					width={30}
-					height={30}
-					className='ml-2 animate-bounce inline'
-				/>
+				<ArrowUp />
 			</p>
 		</Card>
 	);
 	if (loading) {
 		displayResults = (
 			<Card classes='h-48'>
-				<Refresh width={30} height={30} className='m-auto animate-spin' />
+				<Refresh />
 			</Card>
 		);
 	}
@@ -56,18 +53,18 @@ function App() {
 			</Fragment>
 		);
 	}
+	console.log(display);
 
+	let weatherBg = 1;
+	if (display.hasOwnProperty('code')) {
+		weatherBg = parseInt(display.code.slice(0, 2));
+	}
 	return (
-		<Layout bg='bg-blue-200'>
-			<div
-				className='flex flex-col items-stretch w-full max-w-2xl min-h-screen
-			bg-main-background bg-cover shadow-2xl'
-			>
-				<Card>
-					<LocationInput onSearch={handleSearch} />
-				</Card>
-				{displayResults}
-			</div>
+		<Layout bg={weatherBg}>
+			<Card>
+				<LocationInput onSearch={handleSearch} />
+			</Card>
+			{displayResults}
 		</Layout>
 	);
 }

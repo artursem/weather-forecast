@@ -1,11 +1,9 @@
 import { Fragment, useRef, useState, useEffect, useCallback } from 'react';
 import GPSButton from '../layout/GPSButton';
 import SearchButton from '../layout/SearchButton';
-const LocatonInput = (props) => {
+const LocatonInput = ({ onSearch }) => {
 	const [inputCity, setInputCity] = useState('');
 	const locationRef = useRef();
-
-	let isEmpty = !locationRef.current.value.length > 0 ? true : false;
 
 	const handleInputChange = () => {
 		setInputCity(locationRef.current.value);
@@ -14,7 +12,7 @@ const LocatonInput = (props) => {
 	const handleSearch = (event) => {
 		event.preventDefault();
 
-		props.onSearch({
+		onSearch({
 			method: 'city',
 			city: locationRef.current.value,
 			lat: null,
@@ -25,8 +23,7 @@ const LocatonInput = (props) => {
 
 	const handleCurrentPosition = useCallback(() => {
 		const success = (position) => {
-			console.log('i try to locate you');
-			props.onSearch({
+			onSearch({
 				method: 'geo',
 				city: null,
 				lat: position.coords.latitude,
@@ -37,7 +34,7 @@ const LocatonInput = (props) => {
 			console.log(err.code, err.message);
 		};
 		navigator.geolocation.getCurrentPosition(success, failure);
-	});
+	}, [onSearch]);
 
 	useEffect(() => {
 		handleCurrentPosition();
@@ -48,14 +45,13 @@ const LocatonInput = (props) => {
 			<form onSubmit={handleSearch} className='flex-1 flex flex-row'>
 				<input
 					type='search'
-					id={props.id}
 					value={inputCity}
 					ref={locationRef}
 					onChange={handleInputChange}
 					className='border-none bg-opacity-0 bg-transparent 
 								h-12 p-1 w-full cursor-pointer'
 				/>
-				<SearchButton disabled={isEmpty} />
+				<SearchButton />
 			</form>
 			<GPSButton onClick={handleCurrentPosition} />
 		</Fragment>

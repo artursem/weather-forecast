@@ -1,9 +1,9 @@
-import { PinAlt } from 'iconoir-react';
+import PinAlt from '../icons/PinAlt';
 const GPSButton = (props) => {
 	return (
 		<button
 			type='submit'
-			className='rounded-md ml-2 w-16
+			className='rounded-md ml-2 w-16 h-12
             bg-fog-100 text-white flex items-center justify-center
             hover:bg-fog-200 hover:text-fog-400
             active:bg-fog-200 active:text-fog-400

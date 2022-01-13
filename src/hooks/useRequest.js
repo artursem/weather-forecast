@@ -30,7 +30,7 @@ const useRequest = () => {
 				throw new Error('No valid response');
 			}
 			const data = await response.json();
-			console.log(data);
+			// console.log(data);
 			const getCity = data.city.name;
 			const getTemp = data.list[0].main.temp;
 			const getWeather = data.list[0].weather[0].description;
@@ -41,6 +41,7 @@ const useRequest = () => {
 				weather: getWeather,
 				temp: `${(getTemp - 272).toFixed(0)}°C`,
 				icon: `http://openweathermap.org/img/wn/${getIcon}@2x.png`,
+				code: getIcon,
 			});
 			const forecastArray = data.list
 				.map((day) => {

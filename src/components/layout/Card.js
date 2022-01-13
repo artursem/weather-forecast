@@ -3,7 +3,7 @@ const Card = (props) => {
 		<div
 			className={`rounded-lg m-2 p-1 text-blue-100
             backdrop-filter backdrop-blur-sm bg-fog-100
-            flex flex-row items-stretch
+            flex flex-row justify-center items-center
             ${props.classes}`}
 		>
 			{props.children}
