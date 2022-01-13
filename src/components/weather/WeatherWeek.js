@@ -15,7 +15,7 @@ const WeatherWeek = (props) => {
 			{props.get.map((day, idx) => {
 				return (
 					<DaySection
-						key={idx + 1}
+						key={idx}
 						id={idx}
 						day={getDayOfTheWeek(idx)}
 						temp={day.temp}

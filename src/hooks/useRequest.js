@@ -39,7 +39,7 @@ const useRequest = () => {
 				city: getCity,
 				weather: getWeather,
 				temp: `${(getTemp - 272).toFixed(0)}°C`,
-				icon: `http://openweathermap.org/img/wn/${getIcon}@4x.png`,
+				icon: `http://openweathermap.org/img/wn/${getIcon}@2x.png`,
 			});
 			const forecastArray = data.list
 				.map((day) => {
@@ -47,7 +47,7 @@ const useRequest = () => {
 					let iconLink = `http://openweathermap.org/img/wn/${day.weather[0].icon}.png`;
 					return { temp: cel, icon: iconLink };
 				})
-				.slice(0, 5);
+				.slice(0, 7);
 			setForecast(forecastArray);
 		} catch (error) {
 			// setError(true);

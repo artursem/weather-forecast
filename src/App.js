@@ -1,4 +1,4 @@
-import React, { useState, useEffect, Fragment } from 'react';
+import React, { useState, Fragment } from 'react';
 import useRequest from './hooks/useRequest';
 import Layout from './components/layout/Layout';
 import Card from './components/layout/Card';
@@ -6,17 +6,14 @@ import LocationInput from './components/weather/LocationInput';
 import WeatherNow from './components/weather/WeatherNow';
 import WeatherWeek from './components/weather/WeatherWeek';
 import { Refresh } from 'iconoir-react';
+
 function App() {
 	const [location, setLocation] = useState(null);
-
 	const { display, forecast, loading, error, fetchWeather } = useRequest();
-
-	useEffect(() => {
-		fetchWeather(location);
-	}, [fetchWeather, location]);
 
 	const handleSearch = (location) => {
 		setLocation(location);
+		fetchWeather(location);
 	};
 
 	let displayResults = (

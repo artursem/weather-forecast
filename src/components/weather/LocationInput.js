@@ -1,4 +1,4 @@
-import { Fragment, useRef, useState } from 'react';
+import { Fragment, useRef, useState, useEffect, useCallback } from 'react';
 import GPSButton from '../layout/GPSButton';
 import SearchButton from '../layout/SearchButton';
 const LocatonInput = (props) => {
@@ -18,9 +18,10 @@ const LocatonInput = (props) => {
 			lat: null,
 			lon: null,
 		});
+		setInputCity('');
 	};
 
-	const handleCurrentPosition = () => {
+	const handleCurrentPosition = useCallback(() => {
 		const success = (position) => {
 			props.onSearch({
 				method: 'geo',
@@ -30,7 +31,13 @@ const LocatonInput = (props) => {
 			});
 		};
 		navigator.geolocation.getCurrentPosition(success);
-	};
+	});
+
+	useEffect(() => {
+		if (navigator.geolocation) {
+			handleCurrentPosition();
+		}
+	}, [handleCurrentPosition]);
 
 	return (
 		<Fragment>
