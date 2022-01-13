@@ -5,6 +5,8 @@ const LocatonInput = (props) => {
 	const [inputCity, setInputCity] = useState('');
 	const locationRef = useRef();
 
+	let isEmpty = !locationRef.current.value.length > 0 ? true : false;
+
 	const handleInputChange = () => {
 		setInputCity(locationRef.current.value);
 	};
@@ -18,11 +20,12 @@ const LocatonInput = (props) => {
 			lat: null,
 			lon: null,
 		});
-		setInputCity('');
+		// setInputCity('');
 	};
 
 	const handleCurrentPosition = useCallback(() => {
 		const success = (position) => {
+			console.log('i try to locate you');
 			props.onSearch({
 				method: 'geo',
 				city: null,
@@ -30,12 +33,15 @@ const LocatonInput = (props) => {
 				lon: position.coords.longitude,
 			});
 		};
-		navigator.geolocation.getCurrentPosition(success);
+		const failure = (err) => {
+			console.log(err.code, err.message);
+		};
+		navigator.geolocation.getCurrentPosition(success, failure);
 	});
 
 	useEffect(() => {
 		handleCurrentPosition();
-	}, [handleCurrentPosition]);
+	}, []);
 
 	return (
 		<Fragment>
@@ -49,7 +55,7 @@ const LocatonInput = (props) => {
 					className='border-none bg-opacity-0 bg-transparent 
 								h-12 p-1 w-full cursor-pointer'
 				/>
-				<SearchButton />
+				<SearchButton disabled={isEmpty} />
 			</form>
 			<GPSButton onClick={handleCurrentPosition} />
 		</Fragment>
