@@ -1,6 +1,9 @@
 import DaySection from '../layout/DaySection';
 
 const getDayOfTheWeek = (i) => {
+	if (i === 0) {
+		return 'Today';
+	}
 	let day = new Date();
 	day.setDate(day.getDate() + i);
 	const nameDay = Intl.DateTimeFormat(navigator.language, {

@@ -30,6 +30,7 @@ const useRequest = () => {
 				throw new Error('No valid response');
 			}
 			const data = await response.json();
+			console.log(data);
 			const getCity = data.city.name;
 			const getTemp = data.list[0].main.temp;
 			const getWeather = data.list[0].weather[0].description;

@@ -34,9 +34,7 @@ const LocatonInput = (props) => {
 	});
 
 	useEffect(() => {
-		if (navigator.geolocation) {
-			handleCurrentPosition();
-		}
+		handleCurrentPosition();
 	}, [handleCurrentPosition]);
 
 	return (

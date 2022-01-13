@@ -5,7 +5,7 @@ import Card from './components/layout/Card';
 import LocationInput from './components/weather/LocationInput';
 import WeatherNow from './components/weather/WeatherNow';
 import WeatherWeek from './components/weather/WeatherWeek';
-import { Refresh } from 'iconoir-react';
+import { Refresh, ArrowUp } from 'iconoir-react';
 
 function App() {
 	const [location, setLocation] = useState(null);
@@ -18,7 +18,14 @@ function App() {
 
 	let displayResults = (
 		<Card classes='h-48'>
-			<p className='m-auto'>PICK LOCATION</p>
+			<p className='m-auto'>
+				PICK LOCATION
+				<ArrowUp
+					width={30}
+					height={30}
+					className='ml-2 animate-bounce inline'
+				/>
+			</p>
 		</Card>
 	);
 	if (loading) {
@@ -51,8 +58,11 @@ function App() {
 	}
 
 	return (
-		<Layout>
-			<div className='flex flex-col items-stretch w-full max-w-2xl '>
+		<Layout bg='bg-blue-200'>
+			<div
+				className='flex flex-col items-stretch w-full max-w-2xl min-h-screen
+			bg-main-background bg-cover shadow-2xl'
+			>
 				<Card>
 					<LocationInput onSearch={handleSearch} />
 				</Card>
