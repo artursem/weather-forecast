@@ -6,11 +6,19 @@ module.exports = {
 		extend: {
 			backgroundImage: {
 				'main-background':
-					"url('https://images.unsplash.com/photo-1547483238-fab280308b0d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=764&q=80')",
-				'sec-background':
-					"url('https://images.unsplash.com/photo-1542272201-b1ca555f8505?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80')",
+					"url('https://images.pexels.com/photos/4516067/pexels-photo-4516067.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1')",
+				'sun-cloud-background':
+					"url('https://images.pexels.com/photos/3783385/pexels-photo-3783385.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260')",
 				'cloud-background':
-					"url('https://images.unsplash.com/photo-1513002749550-c59d786b8e6c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80')",
+					"url('https://images.unsplash.com/photo-1534088568595-a066f410bcda?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=751&q=80')",
+				'rain-background':
+					"url('https://images.pexels.com/photos/1166991/pexels-photo-1166991.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1')",
+				'snow-background':
+					"url('https://images.unsplash.com/photo-1549136430-c2e0aadfc69f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=735&q=80')",
+				'storm-background':
+					"url('https://images.pexels.com/photos/6510344/pexels-photo-6510344.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260')",
+				'fog-background':
+					"url('https://images.pexels.com/photos/1743392/pexels-photo-1743392.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260')",
 			},
 			colors: {
 				transparent: 'rgba(0,0,0,0)',
@@ -29,6 +37,15 @@ module.exports = {
 					100: '#4EB8CD',
 					300: '#008FB3',
 					500: '#0076A1',
+				},
+				bg: {
+					100: '#729AC0',
+					200: '#6C8EA0',
+					300: '#3D515E',
+					400: '#D0E7F2',
+					500: '#C8D8E4',
+					600: '#CBDBE9',
+					700: '#A3A2A5',
 				},
 			},
 		},

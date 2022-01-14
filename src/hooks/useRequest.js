@@ -15,12 +15,12 @@ const useRequest = () => {
 			if (query.method === 'city') {
 				setLoading(true);
 				response = await fetch(
-					`https://api.openweathermap.org/data/2.5/forecast?q=${query.city}&appid=599f9ab00f5ffd6eeb1a6bf54606a714`
+					`https://api.openweathermap.org/data/2.5/forecast?q=${query.city}&appid=${appid}`
 				);
 			} else if (query.method === 'geo') {
 				setLoading(true);
 				response = await fetch(
-					`https://api.openweathermap.org/data/2.5/forecast?lat=${query.lat}&lon=${query.lon}&appid=599f9ab00f5ffd6eeb1a6bf54606a714`
+					`https://api.openweathermap.org/data/2.5/forecast?lat=${query.lat}&lon=${query.lon}&appid=${appid}`
 				);
 			}
 

@@ -49,7 +49,7 @@ function App() {
 				<Card classes='p-2'>
 					<WeatherWeek get={forecast} />
 				</Card>
-				<Card classes='h-48 p-2'>MAPA</Card>
+				{/* <Card classes='h-48 p-2'>MAPA</Card> */}
 			</Fragment>
 		);
 	}
