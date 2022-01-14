@@ -9,7 +9,7 @@ const useRequest = () => {
 	const fetchWeather = useCallback(async (query) => {
 		setError(false);
 		setLoading(false);
-		const appid = process.env.REACT_APP_KEY;
+		const appid = '599f9ab00f5ffd6eeb1a6bf54606a714';
 		try {
 			let response;
 			if (query.method === 'city') {
