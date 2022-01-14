@@ -53,8 +53,6 @@ function App() {
 			</Fragment>
 		);
 	}
-	console.log(display);
-
 	let weatherBg = 1;
 	if (display.hasOwnProperty('code')) {
 		weatherBg = parseInt(display.code.slice(0, 2));

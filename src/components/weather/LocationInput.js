@@ -38,7 +38,7 @@ const LocatonInput = ({ onSearch }) => {
 
 	useEffect(() => {
 		handleCurrentPosition();
-	}, []);
+	}, [handleCurrentPosition]);
 
 	return (
 		<Fragment>

@@ -7,7 +7,7 @@ const DaySection = (props) => {
 			<li className='w-full h-12 flex flex-row justify-center items-stretch my-2 p-4'>
 				<div className='mx-2 flex-1'>{props.day}</div>
 				<div className='m-auto flex-2 absolute '>
-					<img src={props.icon} className='relative -top-4' />
+					<img src={props.icon} className='relative -top-4' alt={props.id} />
 				</div>
 				<div className='mx-2 flex-1 text-right'>{props.temp}</div>
 			</li>

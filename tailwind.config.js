@@ -1,8 +1,7 @@
 module.exports = {
-	purge: [],
 	darkMode: false, // or 'media' or 'class'
 	content: ['./pages/**/*.{html,js}', './components/**/*.{html,js}'],
-	purge: ['./pages/**/*.{html,js}', './components/**/*.{html,js}'],
+
 	theme: {
 		extend: {
 			backgroundImage: {
