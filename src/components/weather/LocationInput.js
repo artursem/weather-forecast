@@ -33,6 +33,7 @@ const LocatonInput = ({ onSearch }) => {
 		const failure = (err) => {
 			console.log(err.code, err.message);
 		};
+		setInputCity('');
 		navigator.geolocation.getCurrentPosition(success, failure);
 	}, [onSearch]);
 
@@ -48,8 +49,12 @@ const LocatonInput = ({ onSearch }) => {
 					value={inputCity}
 					ref={locationRef}
 					onChange={handleInputChange}
-					className='border-none bg-opacity-0 bg-transparent 
-								h-12 p-1 w-full cursor-pointer'
+					className='rounded-md h-12 p-1 mr-2 w-full cursor-pointer
+
+					md:border-fog-300 md:border-0 md:bg-fog-100 
+					md:text-white  
+					
+					bg-white-500 text-fog-600 border-2'
 				/>
 				<SearchButton />
 			</form>
